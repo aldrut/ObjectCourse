@@ -1,9 +1,22 @@
-class Subject
+export class Subject
 {
-    constructor(id, subject)
+    constructor(id,subject)
     {
-        this.id = 1;
+        
+        this.id = id;
         this.subject = subject;
         
     }
+
+
+    static IncrementId()
+    {
+        if(!this.latestId) this.latestId = 1
+        else this.latestId++
+        return this.latestId;
+
+    }
+
+
+
 }

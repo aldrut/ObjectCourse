@@ -1,4 +1,4 @@
-class Note
+export class Note
 {
     constructor(id,note)
     {

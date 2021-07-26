@@ -1,9 +1,4 @@
-body
-{
-background-image: url(../img/Lyceemarietteboulogne.jpg);
-background-size:  cover;
-background-repeat: no-repeat;
-}
+
 .titreGeneral
 {
     font-size: 3rem;
@@ -46,4 +41,8 @@ background-repeat: no-repeat;
 {
     background-color: rgb(135, 119, 144,0.8);
     margin-bottom: 20px;
+}
+.sectionCard
+{
+    cursor: pointer;
 }

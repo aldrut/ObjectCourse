@@ -1,11 +1,13 @@
-class Student
+// import { Subject } from "./Subject";
+
+export class Student
 {
-    constructor(id, last_name, first_name, id_Sections)
+    constructor(id, last_name, first_name, sections_id)
     {
-        this.id = 1;
+        this.id = id;
         this.last_name = last_name;
         this.first_name = first_name;
-        this.id_Sections = id_Sections;
+        this.sections_id = sections_id;
     }
 }
 

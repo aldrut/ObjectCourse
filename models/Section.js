@@ -1,8 +1,8 @@
-class Section
+export class Section
 {
-    constructor(level, name)
+    constructor(id,level, name)
     {
-        this.id = 1;
+       this.id = id;
         this.level = level;
         this.name = name;
     }
