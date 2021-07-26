@@ -1,0 +1,27 @@
+[
+    {"id":"1","level":"6","name":"A"},
+    {"id":"2","level":"6","name":"B"},
+    {"id":"3","level":"6","name":"C"},
+    {"id":"4","level":"6","name":"D"},
+    {"id":"5","level":"6","name":"E"},
+    {"id":"6","level":"6","name":"F"},
+    {"id":"7","level":"5","name":"A"},
+    {"id":"8","level":"5","name":"B"},
+    {"id":"9","level":"5","name":"C"},
+    {"id":"10","level":"5","name":"D"},
+    {"id":"11","level":"5","name":"E"},
+    {"id":"12","level":"5","name":"F"},
+    {"id":"13","level":"4","name":"A"},
+    {"id":"14","level":"4","name":"B"},
+    {"id":"15","level":"4","name":"C"},
+    {"id":"16","level":"4","name":"D"},
+    {"id":"17","level":"4","name":"E"},
+    {"id":"18","level":"4","name":"F"},
+    {"id":"13","level":"3","name":"A"},
+    {"id":"14","level":"3","name":"B"},
+    {"id":"15","level":"3","name":"C"},
+    {"id":"16","level":"3","name":"D"},
+    {"id":"17","level":"3","name":"E"},
+    {"id":"18","level":"3","name":"F"}
+    
+]
