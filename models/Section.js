@@ -1,9 +1,13 @@
 export class Section {
-  constructor(id, level, name) {
-    this._id = id;
+  
+  constructor(sectionJson) {
+    //destructure
+    const {id,level, name} = sectionJson;
+   
     // le underscore pour mettre la valeur en protected quand on fait des getters setters
-    this._level = level;
-    this.name = name;
+    this._id = id ? id : sectionJson._id;
+    this._level = level ? level : sectionJson._level;
+    this._name = name ? name : sectionJson._name;
   }
 
   //protéger ID en écriture
@@ -29,7 +33,7 @@ export class Section {
   <div>${this.name}</div>`;
   }
   getSectionCard() {
-    let sectionElt = d.createElement("div");
+    let sectionElt = document.createElement("div");
     sectionElt.setAttribute("class", "border text-center p-2 sectionCard");
     sectionElt.innerHTML = `<div>${this.level}ème</div><div>${this.name}</div>`;
     return sectionElt;

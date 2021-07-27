@@ -2,11 +2,20 @@
 
 export class Student {
   constructor(id, last_name, first_name, sections_id) {
-    this.id = id;
+    this._id = id;
     this.last_name = last_name;
     this.first_name = first_name;
-    this.sections_id = sections_id;
+    this._sections_id = sections_id;
   }
+
+  get id() {
+    return this.id;
+  }
+
+  get sections_id() {
+    return this.sections_id;
+  }
+
 
 
   getFullName()
