@@ -1,4 +1,5 @@
 import { Section } from "../models/section";
+import {Student} from "../models/Student";
 
 // const sectionId = window.location.hash.substr(1);
 
@@ -21,4 +22,26 @@ const sectionJson = JSON.parse(localStorage.getItem('section'));
 section = new Section(sectionJson);
 
 document.querySelector('#pageTitle').innerHTML = document.title = section.getDescription();
+//#endregion
+
+//#region Affichage des étudiants
+let student;
+let t = fetch("./data/student.json")
+.then(resp => resp.json())
+.then(json =>
+    {
+        //json == on récupère toutes les données du fichiers students en json
+
+        const filteredJson = json.filter(item => item.section_id === section._id  );
+        // const studentJson = filteredJson.lenght != 0 ? filteredJson[0] : undefined;
+        //   if(studentJson){
+        //      student = new Student(studentJson);
+        //       document.querySelector('#listStudent').innerHTML = student.getFullName();
+        //   }
+        
+        console.log(filteredJson);
+
+    });
+
+let bp;
 //#endregion

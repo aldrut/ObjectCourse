@@ -1,11 +1,13 @@
 // import { Subject } from "./Subject";
 
 export class Student {
-  constructor(id, last_name, first_name, sections_id) {
-    this._id = id;
+  constructor(studentJson) {
+    const {id, last_name, first_name, sections_id} = studentJson;
+
+    this._id = id ? id : studentJson._id;
     this.last_name = last_name;
     this.first_name = first_name;
-    this._sections_id = sections_id;
+    this._sections_id = sections_id ? sections_id : studentJson.section_id;
   }
 
   get id() {
