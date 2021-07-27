@@ -3,8 +3,13 @@
 {
     font-size: 3rem;
     text-align: center;
+    
+}
+h1{
     font-weight: bolder;
-    font-family: 'Trebuchet MS';
+    font-family: 'Comic sans MS';
+    background-color: rgb(41, 38, 38);
+    color: #fff;
 }
 .styleDiv
 {
@@ -22,10 +27,10 @@
     background-color: rgb(255, 193, 7,0.8);
     margin-bottom: 20px;
     color: red;
-    font-size: 3rem;
+    font-size: 2rem;
     text-align: center;
     vertical-align: middle;
-    min-height: ;
+    
 }
 .style5
 {

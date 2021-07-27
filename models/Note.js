@@ -1,8 +1,5 @@
-export class Note
-{
-    constructor(id,note)
-    {
-        this.id = id,
-        this.note = note
-    }
+export class Note {
+  constructor(id, note) {
+    (this.id = id), (this.note = note);
+  }
 }

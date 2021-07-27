@@ -16,23 +16,48 @@ const d = document;
 //#region On récupère les données SECTION du fichier JSON avec fetch puis dans un tableau */
 let tabSection = [];
 let sectionsResponse = fetch("./data/section.json")
-  .then(resp => resp.json())
-  .then(sectionList =>
-    { 
-      
-      for(let i=0; i < sectionList.length; i++)
-        {
-          const sectionJson = sectionList[i];
-          const section = new Section(sectionJson.id, sectionJson.level, sectionJson.name)
-          tabSection.push(section);
-          let htmlElt = `<div class="border text-center p-2 sectionCard m-1">
-          <div>${section.level} ème</div>
-          <div>${section.name}</div>
-          </div>`;
-         // d.querySelector('.sectionContainer'+ section.level).innerHTML += htmlElt;
-          let bp;
-        }
+  .then((resp) => resp.json())
+  .then((json) => {
+    let sectionList = json.map((sectionJson) => {
+      const { id, level, name } = sectionJson;
+      return new Section(id, level, name);
     });
+    sectionList = sectionList.sort((a, b) => (a.name < b.name ? -1 : 1));
+
+    sectionList.forEach((section) => {
+
+      
+       let sectionElt = d.createElement("div");
+       sectionElt.setAttribute("class", "border text-center p-2 sectionCard");
+       sectionElt.innerHTML = `<div>${section.level}ème</div>
+          <div>${section.name}</div>`;
+      
+    
+
+      //Ajouter un evt cliquable sur la div
+      sectionElt.addEventListener("click",handleSectionClick.bind(this, section)
+      );
+
+      d.querySelector(".sectionContainer" + section.level).append(sectionElt);
+    });
+  });
+    function handleSectionClick(section)
+    {
+      window.open('/student.html?query='+section.getDescription(),'_blank');
+      console.log(section);
+    }
+    // for(let i=0; i < sectionList.length; i++)
+    // {
+    //   const sectionJson = sectionList[i];
+    //   const section = new Section(sectionJson.id, sectionJson.level, sectionJson.name)
+    //   tabSection.push(section);
+    //   let htmlElt = `<div class="border text-center p-2 sectionCard m-1">
+    //   <div>${section.level} ème</div>
+    //   <div>${section.name}</div>
+    //   </div>`;
+    //   d.querySelector('.sectionContainer'+ section.level).innerHTML += htmlElt;
+    //   let bp;
+    // }
 //#endregion
 
 //#region On récupère les données NOTES du fichier JSON avec fetch */
@@ -90,7 +115,7 @@ let subjectResponse = fetch("./data/subject.json")
     <div>${subject.id} </div>
     <div>${subject.subject}</div>
     </div>`;
-    d.querySelector('.sectionContainer').innerHTML += htmlElt;
+   // d.querySelector('.sectionContainer').innerHTML += htmlElt;
     let bp;
   }
 });
