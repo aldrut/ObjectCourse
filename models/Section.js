@@ -24,6 +24,13 @@ export class Section {
     }
     this._level = value;
   }
+  get name(){
+    return this._name;
+}
+
+set name(value){
+    this._name = value;
+}
   // creation d'une fonction mais pas de mot clé function
   getDescription() {
     return this.level + "ème " + this.name;
