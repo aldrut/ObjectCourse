@@ -5,7 +5,7 @@ import {Student} from "../models/Student";
 
 //#region En interrogeant la BDD
 
-let section;
+const section;
 // fetch("./data/sections.json")
 //     .then(resp => resp.json())
 //     .then(json => {
@@ -25,23 +25,32 @@ document.querySelector('#pageTitle').innerHTML = document.title = section.getDes
 //#endregion
 
 //#region Affichage des étudiants
-let student;
-let t = fetch("./data/student.json")
+
+fetch("./data/student.json")
 .then(resp => resp.json())
 .then(json =>
     {
         //json == on récupère toutes les données du fichiers students en json
 
-        const filteredJson = json.filter(item => item.section_id === section._id  );
-        // const studentJson = filteredJson.lenght != 0 ? filteredJson[0] : undefined;
-        //   if(studentJson){
-        //      student = new Student(studentJson);
-        //       document.querySelector('#listStudent').innerHTML = student.getFullName();
-        //   }
-        
-        console.log(filteredJson);
+        const filteredJson = json.filter(item => item.section_id == section.id  );
+        let studentList = filteredJson.map(studentJson =>
+            {
+                return new Student(studentJson);
+            })
+       studentList = studentList.sort( (a,b) => a.last_name < b.last_name ? -1 : 1);
+
+       studentList.forEach(student => {
+
+        let studentElt = student.getStudentRow();
+        studentElt.addEventListener ('click',handleStudentClick.bind(this,student));
+        document.querySelector("#listStudent").append(studentElt);
+       })
+       
 
     });
-
+function handleStudentClick()
+{
+    console.log(student);
+}
 let bp;
 //#endregion

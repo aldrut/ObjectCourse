@@ -42,6 +42,7 @@ fetch("./data/section.json")
       d.querySelector(".sectionContainer" + section.level).append(sectionElt);
     });
   });
+  /**Utilisation du localStorage */
     function handleSectionClick(section)
     {
      
