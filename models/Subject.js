@@ -27,7 +27,7 @@ export class Subject extends Model
     getSubjectRow()
     {
       let subjectElt = document.createElement('div');
-      subjectElt.setAttribute('class',"border p-1 studentRow");
+      subjectElt.setAttribute('class'," col border p-1 studentRow");
       subjectElt.innerHTML =  `<div style="background-color:#CC955E">${this.getSubjectName()}</div>`;
       return subjectElt;
     }
