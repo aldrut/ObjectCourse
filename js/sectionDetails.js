@@ -1,11 +1,15 @@
-import { Section } from "../models/section";
-import {Student} from "../models/Student";
+// import { Section } from "../models/section";
+// import {Student} from "../models/Student";
+
+import { Section,Student,Subject } from "../models/index";
+
+
 
 // const sectionId = window.location.hash.substr(1);
 
 //#region En interrogeant la BDD
 
-const section;
+//const section;
 // fetch("./data/sections.json")
 //     .then(resp => resp.json())
 //     .then(json => {
@@ -19,7 +23,7 @@ const section;
 //#endregion
 //#region Avec le localStorage
 const sectionJson = JSON.parse(localStorage.getItem('section'));
-section = new Section(sectionJson);
+const section = new Section(sectionJson);
 
 document.querySelector('#pageTitle').innerHTML = document.title = section.getDescription();
 //#endregion
@@ -40,17 +44,24 @@ fetch("./data/student.json")
        studentList = studentList.sort( (a,b) => a.last_name < b.last_name ? -1 : 1);
 
        studentList.forEach(student => {
-
+        // appel de la fonction depuis la classe mère
+        //student.test();
         let studentElt = student.getStudentRow();
         studentElt.addEventListener ('click',handleStudentClick.bind(this,student));
         document.querySelector("#listStudent").append(studentElt);
        })
-       
+       let bo;
 
     });
-function handleStudentClick()
+
+
+
+function handleStudentClick(student)
 {
-    console.log(student);
+    localStorage.setItem("student", JSON.stringify(student));
+    window.location = "noteDetails.html";
 }
+
+
 let bp;
 //#endregion

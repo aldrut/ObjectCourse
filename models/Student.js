@@ -28,9 +28,13 @@ getStudentRow()
 {
   let studentElt = document.createElement('div');
   studentElt.setAttribute('class',"border p-1 studentRow");
+  studentElt.innerHTML =  `<div>${this.getFullName()}</div>`;
+  return studentElt;
 
 
 }
+
+
 
 
 }

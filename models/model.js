@@ -1,6 +1,6 @@
 /**
  * class mère pour créer nos modeles
- * 
+ * mutualiser propriété et méthode commune
  * 
  */
 
@@ -8,8 +8,13 @@
 
 export class Model{
 
-    constructor()
+    constructor(jsonObject)
     {
-        Object.assign(this,jsonObject)
+        Object.assign(this,jsonObject);
+    }
+ 
+    test()
+    {
+        console.log("classe mere");
     }
 }
