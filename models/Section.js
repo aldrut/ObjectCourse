@@ -43,8 +43,8 @@ export class Section extends Model{
   }
   getSectionCard() {
     let sectionElt = document.createElement("div");
-    sectionElt.setAttribute("class", "border text-center p-2 sectionCard");
-    sectionElt.innerHTML = `<div>${this.level}ème</div><div>${this.name}</div>`;
+    sectionElt.setAttribute("class", "col border text-center p-2 m-2 sectionCard link");
+    sectionElt.innerHTML = `<div>${this.level}ème<br>${this.name}</div>`;
     return sectionElt;
   }
 }

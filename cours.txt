@@ -1,0 +1,16 @@
+Model
+correspond aux éléments de la base de données
+(entity) et pour les services(repository)
+
+Vue
+
+Controller appelle la vue et le service
+
+
+router appelle le controller
+
+
+services
+getAll(...)
+getAllWhere(...)
+getById(...)

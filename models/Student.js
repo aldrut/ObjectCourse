@@ -27,8 +27,8 @@ export class Student extends Model {
 getStudentRow()
 {
   let studentElt = document.createElement('div');
-  studentElt.setAttribute('class',"border p-1 studentRow");
-  studentElt.innerHTML =  `<div>${this.getFullName()}</div>`;
+  studentElt.setAttribute('class',"col border p-1 studentRow sectionCard ");
+  studentElt.innerHTML =  `<div class='col d-flex'>${this.getFullName()}</div>`;
   return studentElt;
 
 
