@@ -15,9 +15,10 @@ export class StudentService
     getAllWhere = async(where) =>
     {
         let json = await fetch('./data/student.json').then(resp => resp.json())
+        let bp;
         return json.filter(where).map(studentJson =>
         {
-            return new Section(studentJson);
+            return new Student(studentJson);
         })
     }
 /** Récupère un étudiant par son Identifiant */
@@ -26,8 +27,4 @@ export class StudentService
         let array = await this.getAllWhere(item => item.id == id)
         return array.length ? array[0] : undefined;
     }
-
-
-
-
 }

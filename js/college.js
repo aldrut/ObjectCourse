@@ -2,7 +2,7 @@ import{Section} from '../models/Section';
 // import{Note} from '../models/Note';
 // import{Student} from '../models/Student';
 // import{Subject} from '../models/Subject';
-
+import{SectionService} from '../services/base.services'
 
 
 document.title = "Notes - Collège Notre Dame";
@@ -17,31 +17,48 @@ const d = document;
 
 let tabSection = [];
 
+/**ON INSTANCIE SECTION SERVICES */
+const service = new SectionService();
+
+/**ON RECUPERE TOUTES LES SECTIONS DE SECTION.JSON */
+/**ON ATTEND UNE REPONSE AVEC await */
+let sectionList = await service.getAll();
+
+/**ON TRIE PAR ORDRE ALPHABETIQUE */
+sectionList = sectionList.sort((a, b) => (a.name < b.name ? -1 : 1));
+
+/**ON ITERE SUR LE TABLEAU POUR AFFICHER LES DONNEES */
+sectionList.forEach((section) => {
+  let sectionElt = section.getSectionCard();
+  sectionElt.addEventListener("click",handleSectionClick.bind(this, section));
+  d.querySelector(".sectionContainer" + section.level).append(sectionElt);
+});
 
 
-fetch("./data/section.json")
-  .then((resp) => resp.json())
-  .then((json) => {
-    let sectionList = json.map((sectionJson) => {
-      //const { id, level, name } = sectionJson;
-      //return new Section(id, level, name);
-      return new Section(sectionJson); // raccourci pour ne pas repasser les prop en parametres
-    });
-    sectionList = sectionList.sort((a, b) => (a.name < b.name ? -1 : 1));
 
-    sectionList.forEach((section) => {
+// fetch("./data/section.json")
+//   .then((resp) => resp.json())
+//   .then((json) => {
+//     let sectionList = json.map((sectionJson) => {
+//       //const { id, level, name } = sectionJson;
+//       //return new Section(id, level, name);
+//       return new Section(sectionJson); // raccourci pour ne pas repasser les prop en parametres
+//     });
+//     sectionList = sectionList.sort((a, b) => (a.name < b.name ? -1 : 1));
 
-      let sectionElt = section.getSectionCard();
-      //  let sectionElt = d.createElement("div");
-      //  sectionElt.setAttribute("class", "border text-center p-2 sectionCard");
-      //  sectionElt.innerHTML = `<div>${section.level} ème</div>
-      //     <div>${section.name}</div>`;
+//     sectionList.forEach((section) => {
 
-      //Ajouter un evt cliquable sur la div
-      sectionElt.addEventListener("click",handleSectionClick.bind(this, section));
-      d.querySelector(".sectionContainer" + section.level).append(sectionElt);
-    });
-  });
+//       let sectionElt = section.getSectionCard();
+//       //  let sectionElt = d.createElement("div");
+//       //  sectionElt.setAttribute("class", "border text-center p-2 sectionCard");
+//       //  sectionElt.innerHTML = `<div>${section.level} ème</div>
+//       //     <div>${section.name}</div>`;
+
+//       //Ajouter un evt cliquable sur la div
+//       sectionElt.addEventListener("click",handleSectionClick.bind(this, section));
+//       d.querySelector(".sectionContainer" + section.level).append(sectionElt);
+//     });
+//   });
   /**Utilisation du localStorage */
     function handleSectionClick(section)
     {
