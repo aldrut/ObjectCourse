@@ -1,6 +1,6 @@
 import {Subject} from '../models/index'
 
-export class SubjectService
+export class SubjectService //extends BaseService
 {
     getAll = async() =>
     {

@@ -24,30 +24,49 @@ export class Subject extends Model
       return this.name;
     }
 
-    getSubjectRow()
+    getSubjectRow(value)
     {
       let subjectElt = document.createElement('div');
       subjectElt.setAttribute('class'," col border p-1 studentRow");
-      subjectElt.innerHTML =  `<div style="background-color:#CC955E">${this.getSubjectName()}</div>`;
+      subjectElt.innerHTML =  `<div style="background-color:#CC955E">${value ? value : this.getSubjectName()}</div>`;
       return subjectElt;
     }
+  
+    // getSubjectRow(value)
+    // {
+      // let subjectElt = document.createElement('div');
+      // subjectElt.setAttribute('class'," col border p-1 studentRow");
+      // subjectElt.innerHTML =  `<div style="background-color:#CC955E">${value}</div>`;
+      // return subjectElt;
+    // }
+  
+  
+  
+  
+
     getNote(value)
     {
       let noteElt = document.createElement('div');
       noteElt.setAttribute('class',"border p-1 studentRow");
-      noteElt.innerHTML =  `<div style="background-color:#EDD3ED"><ul><li>${value == null ? "":value}</li></ul></div>`;
+      noteElt.innerHTML =  `<div style="background-color:#EDD3ED"><ul><li>${value ? value : ""}</li></ul></div>`;
       return noteElt;
     }
-
+/**
+ * @params Prends en paramètre un tableau
+ * @returns Retourne la moyenne de chaque matière
+ */
     getMoyenne(tabValue)
     {
         let moy =0;
         Array.from(tabValue).forEach(x =>
             {
+
                moy += parseFloat(x);
+              
             } )
             
           moy = parseFloat(moy) /parseFloat(tabValue.length);
+          
 
              let moyElt = document.createElement('div');
              moyElt.setAttribute('class',"border p-1 studentRow");
@@ -56,5 +75,4 @@ export class Subject extends Model
             return moyElt;
 
     }
-
 }

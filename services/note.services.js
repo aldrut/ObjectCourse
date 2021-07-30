@@ -1,6 +1,6 @@
 import { Note } from "../models/index";
 
-export class NoteService
+export class NoteService //extends BaseService
 {
     getAll = async() =>
     {
